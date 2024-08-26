@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livewell Housing Solutions - Membership Form</title>
+    <style>
+        /* Add your CSS styling here */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+
+        .company-info1 {
+            text-align: center;
+        }
+
+        .instruction1 {
+            margin-bottom: 20px;
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            text-align: center;
+        }
+
+        .button-container button {
+            margin: 10px;
+        }
+
+        .expanded {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .collapsed {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        .guarantee-question1, .terms1 {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+    <div class="form-header1">
+        <img src="/storage/emulated/0/Pictures/Screenshot/Screenshot_20240825-051817.jpg" alt="Livewell Logo" class="logo">
+        <div class="company-info1">
+            <h1>Livewell Housing Solutions Limited</h1>
+            <p>...own your tomorrow</p>
+        </div>
+    </div>
+
+    <h2>MEMBERSHIP FORM</h2>
+    <p class="instruction1">Complete the form below to sign up for membership to Livewell Housing Community</p>
+
+    <form id="membership-form" onsubmit="sendFormData(event)">
+        <fieldset>
+            <legend>Personal Information</legend>
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="serialNo">Serial No:</label>
+            <input type="text" id="serialNo" name="serialNo" readonly>
+
+            <label for="stateOfOrigin">State of Origin:</label>
+            <input type="text" id="stateOfOrigin" name="stateOfOrigin">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+
+            <label for="residentialAddress">Residential Address:</label>
+            <input type="text" id="residentialAddress" name="residentialAddress">
+
+            <label for="maritalStatus">Marital Status:</label>
+            <input type="text" id="maritalStatus" name="maritalStatus">
+
+            <label for="mobileNo">Mobile No:</label>
+            <input type="text" id="mobileNo" name="mobileNo">
+
+            <label for="occupation">Occupation:</label>
+            <input type="text" id="occupation" name="occupation">
+
+            <label for="monthlySavings">Monthly savings (optional):</label>
+            <input type="text" id="monthlySavings" name="monthlySavings">
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email">
+                
+            <label for="date">Date of Registration:</label>
+            <input type="date" id="date" name="date" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Next of Kin</legend>
+            <label for="kinFullName">Full Name:</label>
+            <input type="text" id="kinFullName" name="kinFullName">
+
+            <label for="relationship">Relationship:</label>
+            <input type="text" id="relationship" name="relationship">
+
+            <label for="kinAddress">Address:</label>
+            <input type="text" id="kinAddress" name="kinAddress">
+
+            <label for="kinSerialNo">Kin Serial No:</label>
+            <input type="text" id="kinSerialNo" name="kinSerialNo" readonly>
+        </fieldset>
+
+        <fieldset>
+            <legend>Referee</legend>
+            <label for="refereeName">Name of Referee:</label>
+            <input type="text" id="refereeName" name="refereeName">
+
+            <label for="refereePhone">Referee Phone Number:</label>
+            <input type="text" id="refereePhone" name="refereePhone">
+
+            <label for="refereeEmail">Referee Email address:</label>
+            <input type="text" id="refereeEmail" name="refereeEmail">
+
+            <label for="refereeSerialNo">Referee Serial No:</label>
+            <input type="text" id="refereeSerialNo" name="refereeSerialNo">
+
+            <label for="refereeSignature">Referee Signature:</label>
+            <input type="text" id="refereeSignature" name="refereeSignature">
+
+            <label for="refereeAddress">Address:</label>
+            <input type="text" id="refereeAddress" name="refereeAddress">
+        </fieldset>
+
+        <p class="guarantee-question1">
+            CAN YOU GUARANTEE SOMEONE INTRODUCED BY YOU? <span>Yes / No</span>
+        </p>
+
+        <p class="terms1">
+            Do you agree to the terms and conditions and promise to abide by the regulation governing LIVEWELL HOUSING SOL. LTD? If yes, please Sign:
+        </p>
+
+        <label for="signature">Signature & Date:</label>
+        <input type="text" id="signature" name="signature">
+
+        <div class="button-container">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</div>
+
+<div class="button-container">
+    <button onclick="toggleSection('business-model-2', 'message-button-2', 'message-icon-2', 'message-text-2')">Close</button>
+    <button onclick="scrollToTop()">Back to Top</button>
+</div>
+
+<script>
+    // Function to send form data via mailto link
+    function sendFormData(event) {
+        event.preventDefault();
+        const form = document.getElementById('membership-form');
+        const formData = new FormData(form);
+        const mailtoLink = `mailto:mondaykingsley80@gmail.com,livewell.equity@gmail.com?subject=New Membership Application&body=${encodeURIComponent(new URLSearchParams(formData).toString())}`;
+        window.location.href = mailtoLink;
+    }
+
+    // Function to toggle the visibility of a section
+    function toggleSection(sectionId, buttonId, iconId, textId) {
+        const section = document.getElementById(sectionId);
+        const button = document.getElementById(buttonId);
+        const icon = document.getElementById(iconId);
+        const text = document.getElementById(textId);
+        
+        if (section.classList.contains('expanded')) {
+            section.classList.remove('expanded');
+            section.classList.add('collapsed');
+            icon.textContent = '+';
+            text.textContent = 'Expand';
+        } else {
+            section.classList.remove('collapsed');
+            section.classList.add('expanded');
+            icon.textContent = '-';
+            text.textContent = 'Collapse';
+        }
+    }
+
+    // Function to scroll to the top of the page
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Function to generate a unique serial number
+    function generateSerialNumber() {
+        const serialNoField = document.getElementById('serialNo');
+        const randomSerialNo = `LW-${Math.floor(100000 + Math.random() * 900000)}`;
+        serialNoField.value = randomSerialNo;
+    }
+
+    // Call generateSerialNumber when the page loads
+    document.addEventListener('DOMContentLoaded', generateSerialNumber);
+</script>
+</body>
+</html>
